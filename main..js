@@ -17,13 +17,11 @@ app.post("/", (req, res) => {
 
         apiResponse.on('end', () => {
             const parsedData = JSON.parse(data);
-            console.log(parsedData.main);
             res.json(parsedData.main); // Send response back to client
         });
     });
 
     request.on('error', (error) => {
-        console.error(`Error: ${error.message}`);
         res.status(500).json({ error: 'Error fetching data' });
     });
 });
